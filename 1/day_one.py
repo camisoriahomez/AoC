@@ -1,0 +1,26 @@
+#########################################################################
+##                                                                     ##
+##                   AoC day 1 - 22/12/23                              ##
+##                                                                     ##
+#########################################################################
+
+def leer_archivo(nombre):
+  archivo = open(nombre, "r")
+  lineas = archivo.readlines()
+  archivo.close()
+  return lineas
+
+def extraigo_nums(linea):
+  nums = [i for i in linea if i.isdigit()]
+  if len(nums) > 1: 
+    return int(nums[0] + nums[-1])
+  else:
+    return int(nums[0]*2)
+
+if __name__ == '__main__':
+  archivo = input('Nombre del archivo: ')
+  lineas = leer_archivo(archivo)
+  codigo = 0  
+  for linea in lineas:
+    codigo += extraigo_nums(linea)
+  print(codigo)
